@@ -1,7 +1,7 @@
 import React from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import PokemonButton from './PokemonButton';
-import victoryBg from '../../assets/victory/Gemini_Generated_Image_lkpopblkpopblkpo.png';
+import victoryBg from '../../assets/Victory/Gemini_Generated_Image_lkpopblkpopblkpo.png';
 
 export default function GameOverModal({ isOpen, winner, reason, onRestart, onExit }) {
     if (!isOpen) return null;
