@@ -155,7 +155,38 @@ export default function Board({ game, onMove, getMoves, canInteract = true, capt
         }
     }
 
-    // Final Calibrated Values
+    // Dynamic Scaling Logic
+    const [boardScale, setBoardScale] = useState(1);
+
+    useEffect(() => {
+        const handleResize = () => {
+            const margin = 10; // Minimal safety margin
+            const maxWidth = window.innerWidth - margin;
+
+            // Reserve space for UI controls (top/bottom) on mobile
+            // On desktop/landscape, we have more width than height constraints usually.
+            const uiHeight = window.innerWidth < 768 ? 120 : 0;
+            const maxHeight = window.innerHeight - margin - uiHeight;
+
+            // Base Board Dimensions
+            const boardW = 1000;
+            const boardH = 750;
+
+            const scaleW = maxWidth / boardW;
+            const scaleH = maxHeight / boardH;
+
+            // Choose the smaller scale to ensure it fits both width and height
+            // Allow upscaling slightly if needed? No, max 1 is safer for sharpness.
+            // Actually, for really small phones, allow it to be whatever it needs.
+            const newScale = Math.min(scaleW, scaleH);
+            setBoardScale(newScale);
+        };
+
+        handleResize();
+        window.addEventListener('resize', handleResize);
+        return () => window.removeEventListener('resize', handleResize);
+    }, []);
+
     const PIECE_CONFIG = {
         w: { p: { scale: 1, y: 28 }, n: { scale: 1.2, y: 23 }, b: { scale: 1.1, y: 27 }, r: { scale: 1, y: 23 }, q: { scale: 1, y: 18 }, k: { scale: 0.95, y: 18 } },
         b: { p: { scale: 1, y: 26 }, n: { scale: 1.05, y: 22 }, b: { scale: 1.25, y: 28 }, r: { scale: 0.75, y: 13 }, q: { scale: 1, y: 24 }, k: { scale: 0.9, y: 18 } }
@@ -183,26 +214,15 @@ export default function Board({ game, onMove, getMoves, canInteract = true, capt
             />
 
             {/* MAIN BOARD SCALE WRAPPER */}
-            {/* 
-                This div handles the responsiveness.
-                By default (mobile), it scales down to 0.55x.
-                On md screens (desktop), it scales up to 1.0x.
-            */}
-            {/* MAIN BOARD SCALE WRAPPER */}
-            {/* 
-                Responsive Scaling:
-                - Default (Mobile Portrait): 0.55x
-                - Landscape (Mobile): 0.45x (Fits height)
-                - Medium (Tablet/Desktop): 1.0x (Restores full size)
-            */}
             <div
-                className="relative flex items-center justify-center transition-transform duration-300 origin-center transform scale-[0.42] landscape:scale-[0.35] md:scale-100 md:landscape:scale-100"
+                className="relative flex items-center justify-center transition-transform duration-300 origin-center"
+                style={{ transform: `scale(${boardScale})` }}
             >
                 {/* 
                    BOARD BACKGROUND CONTAINER (Fixed Dimensions for Calibration)
                 */}
                 <div
-                    className="relative flex items-center justify-center select-none mb-12 landscape:mb-0"
+                    className="relative flex items-center justify-center select-none"
                     style={{
                         width: '1000px',
                         height: '750px',
