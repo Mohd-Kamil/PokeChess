@@ -103,7 +103,8 @@ function App() {
         className="min-h-screen w-screen flex flex-col items-center justify-center bg-gray-900 text-white font-['Press_Start_2P'] bg-center overflow-hidden"
         style={{
           backgroundImage: `url(${mainBg})`,
-          backgroundSize: '100% 100%', // Force full stretch to show entire image
+          backgroundSize: 'cover', // Fix stretch issue: maintains aspect ratio
+          backgroundPosition: 'center',
           imageRendering: 'auto' // Ensure smooth scaling (not pixelated)
         }}
       >

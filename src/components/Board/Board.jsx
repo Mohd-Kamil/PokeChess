@@ -196,7 +196,7 @@ export default function Board({ game, onMove, getMoves, canInteract = true, capt
                 - Medium (Tablet/Desktop): 1.0x (Restores full size)
             */}
             <div
-                className="relative flex items-center justify-center transition-transform duration-300 origin-center transform scale-[0.55] landscape:scale-[0.35] md:scale-100 md:landscape:scale-100"
+                className="relative flex items-center justify-center transition-transform duration-300 origin-center transform scale-[0.36] landscape:scale-[0.30] md:scale-100 md:landscape:scale-100"
             >
                 {/* 
                    BOARD BACKGROUND CONTAINER (Fixed Dimensions for Calibration)
