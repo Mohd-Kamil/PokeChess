@@ -33,12 +33,12 @@ export default function MainMenu({ onSelectMode }) {
                 alt="Background"
             />
 
-            <div className="z-10 flex flex-col landscape:flex-row items-center gap-6 landscape:gap-24 animate-fade-in-up">
-                {/* Logo placed on top (or left in landscape) */}
+            <div className="z-10 flex flex-col landscape:flex-row md:landscape:flex-col lg:landscape:flex-col items-center gap-6 landscape:gap-24 md:landscape:gap-6 lg:landscape:gap-6 animate-fade-in-up">
+                {/* Logo placed on top (or left in landscape, back to top on desktop) */}
                 <img
                     src={logo}
                     alt="PokeChess Logo"
-                    className="w-[300px] md:w-[400px] landscape:w-[220px] drop-shadow-[0_10px_10px_rgba(0,0,0,0.5)] mb-4 -mt-12 landscape:mt-0 landscape:mb-0"
+                    className="w-[300px] md:w-[400px] landscape:w-[220px] md:landscape:w-[400px] lg:landscape:w-[400px] drop-shadow-[0_10px_10px_rgba(0,0,0,0.5)] mb-4 -mt-12 landscape:mt-0 landscape:mb-0 md:landscape:mb-4 md:landscape:-mt-12 lg:landscape:mb-4 lg:landscape:-mt-12"
                 />
 
                 {!showModes ? (
@@ -49,11 +49,11 @@ export default function MainMenu({ onSelectMode }) {
                         <img
                             src={playBtn}
                             alt="Play"
-                            className="w-[280px] md:w-[380px] landscape:w-[220px] drop-shadow-2xl"
+                            className="w-[280px] md:w-[380px] landscape:w-[220px] md:landscape:w-[380px] lg:landscape:w-[380px] drop-shadow-2xl"
                         />
                     </button>
                 ) : (
-                    <div className="relative w-[340px] md:w-[440px] landscape:w-[260px] animate-fade-in hover:scale-105 transition-transform duration-500">
+                    <div className="relative w-[340px] md:w-[440px] landscape:w-[260px] md:landscape:w-[440px] lg:landscape:w-[440px] animate-fade-in hover:scale-105 transition-transform duration-500">
                         <img src={modesBtn} alt="Select Mode" className="w-full drop-shadow-2xl" />
 
                         {/* Invisible Hit Areas - Horizontal Split */}
@@ -74,7 +74,7 @@ export default function MainMenu({ onSelectMode }) {
                     </div>
                 )}
 
-                <p className="text-white/60 text-[10px] font-bold mt-4 landscape:mt-0 landscape:absolute landscape:bottom-2 landscape:right-4 animate-pulse">
+                <p className="text-white/60 text-[10px] font-bold mt-4 landscape:mt-0 landscape:absolute landscape:bottom-2 landscape:right-4 md:landscape:mt-4 md:landscape:static lg:landscape:mt-4 lg:landscape:static animate-pulse">
                     MADE BY MOHD KAMIL
                 </p>
             </div>
