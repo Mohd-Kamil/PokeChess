@@ -1,0 +1,44 @@
+@import url('https://fonts.googleapis.com/css2?family=Russo+One&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+html,
+body {
+  font-family: 'Press Start 2P', cursive;
+  @apply bg-gray-900 text-white m-0;
+  overflow: hidden;
+  width: 100%;
+  height: 100%;
+}
+
+/* Authentic GBA Text Box Style */
+.pixel-border {
+  box-shadow:
+    -4px 0 0 0 white,
+    4px 0 0 0 white,
+    0 -4px 0 0 white,
+    0 4px 0 0 white,
+    0 0 0 4px white;
+  margin: 4px;
+  /* Space for the border */
+}
+
+/* Pokemon "Blue" Box Gradient */
+.poke-box-blue {
+  background: linear-gradient(180deg, #2468b8 0%, #1c5294 100%);
+  border: 2px solid #5d9ee3;
+  /* Inner light border */
+}
+
+/* Scanned line effect overlay (optional, subtle) */
+.scanlines {
+  background: linear-gradient(to bottom,
+      rgba(255, 255, 255, 0),
+      rgba(255, 255, 255, 0) 50%,
+      rgba(0, 0, 0, 0.1) 50%,
+      rgba(0, 0, 0, 0.1));
+  background-size: 100% 4px;
+}
