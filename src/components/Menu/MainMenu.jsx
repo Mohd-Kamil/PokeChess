@@ -3,7 +3,7 @@ import { playSelectSound, initAudio } from '../../utils/sound';
 import mainBg from '../../assets/Background/main_bg.png';
 import playBtn from '../../assets/buttons/play.png';
 import modesBtn from '../../assets/buttons/modes.png';
-import logo from '../../assets/logo/logo.png';
+import logo from '../../assets/Logo/logo.png';
 
 export default function MainMenu({ onSelectMode }) {
     const [showModes, setShowModes] = useState(false);
