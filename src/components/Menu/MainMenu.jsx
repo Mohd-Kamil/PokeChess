@@ -33,19 +33,27 @@ export default function MainMenu({ onSelectMode }) {
                 alt="Background"
             />
 
-            <div className="z-10 flex flex-col items-center gap-6 animate-fade-in-up">
-                {/* Logo placed on top */}
-                <img src={logo} alt="PokeChess Logo" className="w-[300px] md:w-[400px] drop-shadow-[0_10px_10px_rgba(0,0,0,0.5)] mb-4 -mt-12" />
+            <div className="z-10 flex flex-col landscape:flex-row items-center gap-6 landscape:gap-24 animate-fade-in-up">
+                {/* Logo placed on top (or left in landscape) */}
+                <img
+                    src={logo}
+                    alt="PokeChess Logo"
+                    className="w-[300px] md:w-[400px] landscape:w-[220px] drop-shadow-[0_10px_10px_rgba(0,0,0,0.5)] mb-4 -mt-12 landscape:mt-0 landscape:mb-0"
+                />
 
                 {!showModes ? (
                     <button
                         onClick={handlePlayClick}
                         className="hover:scale-105 active:scale-95 transition-transform focus:outline-none animate-pulse-slow"
                     >
-                        <img src={playBtn} alt="Play" className="w-[280px] md:w-[380px] drop-shadow-2xl" />
+                        <img
+                            src={playBtn}
+                            alt="Play"
+                            className="w-[280px] md:w-[380px] landscape:w-[220px] drop-shadow-2xl"
+                        />
                     </button>
                 ) : (
-                    <div className="relative w-[340px] md:w-[440px] animate-fade-in hover:scale-105 transition-transform duration-500">
+                    <div className="relative w-[340px] md:w-[440px] landscape:w-[260px] animate-fade-in hover:scale-105 transition-transform duration-500">
                         <img src={modesBtn} alt="Select Mode" className="w-full drop-shadow-2xl" />
 
                         {/* Invisible Hit Areas - Horizontal Split */}
@@ -66,7 +74,7 @@ export default function MainMenu({ onSelectMode }) {
                     </div>
                 )}
 
-                <p className="text-white/60 text-[10px] font-bold mt-4 animate-pulse">
+                <p className="text-white/60 text-[10px] font-bold mt-4 landscape:mt-0 landscape:absolute landscape:bottom-2 landscape:right-4 animate-pulse">
                     MADE BY MOHD KAMIL
                 </p>
             </div>

@@ -28,22 +28,22 @@ export default function GameOverModal({ isOpen, winner, reason, onRestart, onExi
                     animate={{ scale: 1, opacity: 1 }}
                     exit={{ scale: 0, opacity: 0 }}
                     // Container for the victory content
-                    className="relative flex flex-col items-center justify-center gap-6 p-6 max-w-2xl w-full"
+                    className="relative flex flex-col landscape:flex-row items-center justify-center gap-6 landscape:gap-12 p-6 max-w-2xl landscape:max-w-4xl w-full"
                 >
                     {/* Victory Image - Centered and Large */}
                     <img
                         src={victoryBg}
                         alt="Victory"
-                        className="w-full max-w-md object-contain drop-shadow-2xl"
+                        className="w-full max-w-md landscape:w-64 landscape:max-w-xs object-contain drop-shadow-2xl"
                     />
 
                     {/* Text & Controls - Below the Image */}
-                    <div className="flex flex-col items-center gap-4 w-full">
-                        <p className={`font-press-start text-xs md:text-sm ${colorClass} uppercase tracking-widest drop-shadow-[2px_2px_0_rgba(0,0,0,0.8)] bg-black/40 px-6 py-2 rounded-lg border-2 border-white/20`}>
+                    <div className="flex flex-col items-center landscape:items-start gap-4 w-full">
+                        <p className={`font-press-start text-xs md:text-sm ${colorClass} uppercase tracking-widest drop-shadow-[2px_2px_0_rgba(0,0,0,0.8)] bg-black/40 px-6 py-2 rounded-lg border-2 border-white/20 text-center landscape:text-left`}>
                             {subTitle || "VICTORY!"}
                         </p>
 
-                        <div className="flex gap-4 justify-center mt-2">
+                        <div className="flex gap-4 justify-center landscape:justify-start mt-2">
                             <PokemonButton
                                 onClick={onExit}
                                 color="gray"

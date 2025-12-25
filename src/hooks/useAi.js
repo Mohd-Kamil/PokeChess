@@ -3,6 +3,13 @@ import AIWorker from '../workers/aiWorker?worker';
 
 export function useAi(game, makeMove, difficulty, gameMode) {
     const workerRef = useRef(null);
+    const makeMoveRef = useRef(makeMove);
+
+    // Keep the ref updated with the latest makeMove function
+    // This fixes the stale closure issue where the worker used the initial render's makeMove
+    useEffect(() => {
+        makeMoveRef.current = makeMove;
+    }, [makeMove]);
 
     // Initialize Worker Lifecycle
     useEffect(() => {
@@ -13,7 +20,8 @@ export function useAi(game, makeMove, difficulty, gameMode) {
         workerRef.current.onmessage = (e) => {
             const bestMove = e.data;
             if (bestMove) {
-                makeMove(bestMove);
+                // Use the ref to access the *current* makeMove closure
+                makeMoveRef.current(bestMove);
             }
         };
 
